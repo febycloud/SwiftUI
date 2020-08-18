@@ -117,6 +117,25 @@ class observable:ObservableObject{
         }
         
     }
+  //update data
+    func updateTodo(id:NSManagedObjectID,todo:String){
+        let app=UIApplication.shared.delegate as! AppDelegate
+        let context=app.persistentContainer.viewContext
+        let req=NSFetchRequest<NSFetchRequestResult>(entityName: "Todos")
+        do{
+            let res=try context.fetch(req)
+            for i in res as! [NSManagedObject]{
+                if i.objectID==id{
+                     context.setValue(todo, forKey: "todo")
+                    try context.save()
+                    
+                }
+            }
+        }
+        catch{
+            
+        }
+    }
 
     
 }
