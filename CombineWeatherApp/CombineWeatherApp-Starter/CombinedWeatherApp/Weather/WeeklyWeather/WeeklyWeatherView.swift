@@ -71,9 +71,8 @@ private extension WeeklyWeatherView {
 
   var cityHourlyWeatherSection: some View {
     Section {
-      NavigationLink(destination: CurrentWeatherView()) {
+      NavigationLink(destination: viewModel.currentWeatherView) {
         VStack(alignment: .leading) {
-          // 3
           Text(viewModel.city)
           Text("Weather today")
             .font(.caption)
@@ -82,6 +81,7 @@ private extension WeeklyWeatherView {
       }
     }
   }
+
 
   var emptySection: some View {
     Section {
